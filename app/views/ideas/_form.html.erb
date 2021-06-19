@@ -26,6 +26,8 @@
     <%= form.file_field :picture %>
   </div>
 
+  <%= form.hidden_field :username, value: current_user.email %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
