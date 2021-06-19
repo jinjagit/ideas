@@ -18,7 +18,7 @@ class CommentsReflex < ApplicationReflex
     comment = Comment.find(element.dataset.comment_id)
 
     if comment.username == current_user.email
-      Comment.update(comment_params)
+      comment.update(comment_params)
     end
   end
 
