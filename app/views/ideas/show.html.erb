@@ -1,3 +1,4 @@
+<p><br></p>
 
 <div class="card">
   <div class="card-body">
@@ -34,8 +35,7 @@
 
       <p><br></p>
 
-      <div id="comments" class="card">
-        <div class="card-body">
+      <div id="comments">
           <p><strong id="comments-title">Comments (<%= @comments.count %>):</strong></p>
           <% @comments.each do |comment| %>
             <div class="card">
@@ -45,7 +45,6 @@
               </div>
             </div>
           <% end %>
-        </div>
       </div>
     </div>
   </div>
