@@ -40,12 +40,12 @@
         <p><strong id="comments-title">Comments (<%= @comments.count %>):</strong></p>
         <% @comments.each do |comment| %>
         <div class="card">
-          <div class="card-body" id="foo">
+          <div class="card-body" id="<%= dom_id(comment) %>">
             <small><%= comment.username %></small>
             <p><%= comment.body %><p>
             <% if comment.username == current_user.email %>
               <button type="button" class="btn btn-danger" style="float:right;" data-reflex="click->Comments#delete" data-comment-id="<%= comment.id %>">Delete</button>
-              <button type="button" class="btn btn-primary" style="float:left;" data-reflex="click->Comments#edit">Edit</button>
+              <button type="button" class="btn btn-primary" style="float:left;" data-reflex="click->Comments#edit" data-comment-id="<%= comment.id %>">Edit</button>
             <% end %>
           </div>
         </div>
