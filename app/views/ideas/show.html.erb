@@ -15,4 +15,28 @@
       <%= link_to 'Back', ideas_path %>
     </p>
   </div>
+
+  <div id="comments">
+      <p><strong id="comments-title">Comments (<%= @comments.count %>):</strong></p>
+      <% @comments.each do |comment| %>
+        <div class="card">
+          <div class="card-body">
+            <%= comment.body %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= form_with model: @ideas, data: { reflex: "submit->Comments#add"} do |form| %>
+      <div class="card">
+        <div class="card-body">
+          <div class="mb-3">
+            <strong><%= form.label "Add a comment:", { class: "form-label"} %></strong>
+            <%= form.text_field :body, { class: "form-control" } %>
+          </div>
+          <%= form.submit :Submit, class: 'btn btn-success' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
