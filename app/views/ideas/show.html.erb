@@ -1,42 +1,48 @@
 
 <p id="notice"><%= notice %></p>
 
-<div class="row">
-  <div class="col-md-9">
-    <%= image_tag(@idea.picture_url, width: '100%') if @idea.picture.present? %>
-  </div>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-9">
+        <%= image_tag(@idea.picture_url, width: '100%') if @idea.picture.present? %>
+      </div>
 
-  <div class="col-md-3">
-    <p><b>Name: </b><%= @idea.name %></p>
-    <p><b>Description: </b><%= @idea.description %></p>
-    <p>
-      <%= link_to 'Edit', edit_idea_path(@idea) %> |
-      <%= link_to 'Destroy', @idea, data: { confirm: 'Are you sure?' }, method: :delete %> |
-      <%= link_to 'Back', ideas_path %>
-    </p>
-  </div>
+      <div class="col-md-3">
+        <p><b>Name: </b><%= @idea.name %></p>
+        <p><b>Description: </b><%= @idea.description %></p>
+        <p>
+          <%= link_to 'Edit', edit_idea_path(@idea) %> |
+          <%= link_to 'Destroy', @idea, data: { confirm: 'Are you sure?' }, method: :delete %> |
+          <%= link_to 'Back', ideas_path %>
+        </p>
+      </div>
+      </div>
 
-  <div id="comments">
-      <p><strong id="comments-title">Comments (<%= @comments.count %>):</strong></p>
-      <% @comments.each do |comment| %>
+      <%= form_with model: @ideas, data: { reflex: "submit->Comments#add"} do |form| %>
         <div class="card">
           <div class="card-body">
-            <%= comment.body %>
+            <div class="mb-3">
+              <strong><%= form.label "Add a comment:", { class: "form-label"} %></strong>
+              <%= form.text_field :body, { class: "form-control" } %>
+            </div>
+            <%= form.submit :Submit, class: 'btn btn-success' %>
           </div>
         </div>
       <% end %>
-    </div>
 
-    <%= form_with model: @ideas, data: { reflex: "submit->Comments#add"} do |form| %>
-      <div class="card">
+      <div id="comments" class="card">
         <div class="card-body">
-          <div class="mb-3">
-            <strong><%= form.label "Add a comment:", { class: "form-label"} %></strong>
-            <%= form.text_field :body, { class: "form-control" } %>
-          </div>
-          <%= form.submit :Submit, class: 'btn btn-success' %>
+          <p><strong id="comments-title">Comments (<%= @comments.count %>):</strong></p>
+          <% @comments.each do |comment| %>
+            <div class="card">
+              <div class="card-body">
+                <%= comment.body %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
