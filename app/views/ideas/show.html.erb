@@ -42,6 +42,9 @@
               <div class="card-body">
                 <small><%= comment.username %></small>
                 <p><%= comment.body %><p>
+                <% if comment.username == current_user.email %>
+                  <button type="button" class="btn btn-danger" data-reflex="click->Comments#delete" data-comment-id="<%= comment.id %>">Delete</button>
+                <% end %>
               </div>
             </div>
           <% end %>
