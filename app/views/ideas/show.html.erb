@@ -26,6 +26,7 @@
               <strong><%= form.label "Add a comment:", { class: "form-label"} %></strong>
               <%= form.text_field :body, { class: "form-control" } %>
             </div>
+            <%= form.hidden_field :username, value: current_user.email %>
             <%= form.submit :Submit, class: 'btn btn-success' %>
           </div>
         </div>
@@ -39,7 +40,8 @@
           <% @comments.each do |comment| %>
             <div class="card">
               <div class="card-body">
-                <%= comment.body %>
+                <small><%= comment.username %></small>
+                <p><%= comment.body %><p>
               </div>
             </div>
           <% end %>
