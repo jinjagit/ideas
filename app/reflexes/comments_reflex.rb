@@ -8,4 +8,12 @@ class CommentsReflex < ApplicationReflex
     comment = Idea.find(params[:id]).comments.find(id)
     comment.destroy
   end
+
+  def edit
+    morph "#foo", render(partial: "edit_form")
+  end
+
+  def update
+    puts "hello"
+  end
 end
