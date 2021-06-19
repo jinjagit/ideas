@@ -19,6 +19,8 @@
       </div>
       </div>
 
+      <p><br></p>
+
       <%= form_with model: @ideas, data: { reflex: "submit->Comments#add"} do |form| %>
         <div class="card">
           <div class="card-body">
@@ -30,6 +32,8 @@
           </div>
         </div>
       <% end %>
+
+      <p><br></p>
 
       <div id="comments" class="card">
         <div class="card-body">
